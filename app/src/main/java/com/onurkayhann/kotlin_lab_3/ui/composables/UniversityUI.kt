@@ -36,7 +36,7 @@ fun UniversityUI(viewModel: UniversityViewModel = viewModel()) {
         TextField(
             value = country,
             onValueChange = { country = it },
-            label = { Text("Enter country") },
+            label = { Text("Which country do you wanna study in") },
             modifier = Modifier.fillMaxWidth()
         )
         Button(
