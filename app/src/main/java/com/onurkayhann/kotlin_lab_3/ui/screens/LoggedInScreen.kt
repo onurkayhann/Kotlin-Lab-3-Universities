@@ -5,5 +5,5 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun LoggedInScreen(username: String) {
-    Text(text = "Welcome username")
+    Text(text = "Welcome $username")
 }
