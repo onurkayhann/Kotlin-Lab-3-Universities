@@ -4,7 +4,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScreen: (String) -> Unit) {
 
     Text(text = "Login")
 

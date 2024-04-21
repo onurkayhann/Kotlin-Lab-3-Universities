@@ -38,3 +38,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
+/*
+ *  TODO:
+ *      - font
+ *      - logo
+ *      - theme
+ *      - colors
+*/
