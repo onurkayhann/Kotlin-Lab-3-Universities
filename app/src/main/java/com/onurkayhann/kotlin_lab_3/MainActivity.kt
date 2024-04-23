@@ -46,4 +46,5 @@ class MainActivity : ComponentActivity() {
  *      - logo
  *      - theme
  *      - colors
+ *      - user shouldn't be able to register with existing username
 */

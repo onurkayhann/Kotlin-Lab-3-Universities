@@ -1,5 +1,6 @@
 package com.onurkayhann.kotlin_lab_3.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 
 @Composable
 fun AboutScreen(onNavigateToLoginScreen: () -> Unit) {
@@ -18,7 +20,7 @@ fun AboutScreen(onNavigateToLoginScreen: () -> Unit) {
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().background(BlackBlue80)
     ) {
 
         Text(
