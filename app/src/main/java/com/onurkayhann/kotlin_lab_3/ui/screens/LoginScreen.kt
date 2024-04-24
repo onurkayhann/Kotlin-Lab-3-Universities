@@ -22,8 +22,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import com.onurkayhann.kotlin_lab_3.ui.components.MyBtn
 import com.onurkayhann.kotlin_lab_3.ui.models.users
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
+import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 
 @Composable
 fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScreen: (String) -> Unit) {
@@ -74,13 +76,11 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        Button(onClick = { userLogin() }) {
-            Text(
-                text = "Login",
-                modifier = Modifier
-                    .padding(horizontal = 100.dp, vertical = 5.dp)
-            )
-        }
+        MyBtn(
+            text = "Login",
+            onClick = { userLogin() },
+            backgroundColor = Blue80
+        )
 
         Spacer(modifier = Modifier.height(15.dp))
         Text(
