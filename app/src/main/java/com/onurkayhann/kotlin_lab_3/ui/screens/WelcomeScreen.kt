@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
+import com.onurkayhann.kotlin_lab_3.ui.components.MyBtn
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 
@@ -48,7 +49,9 @@ fun WelcomeScreen(onNavigateToAboutScreen: () -> Unit) {
         ) {
 
             Text(
-                AnnotatedString("Welcome to ") + AnnotatedString("ErasmusBuddy", SpanStyle(color = Blue80, fontFamily = FontFamily(Font(R.font.poppins_extra_bold)))) + AnnotatedString("! This is the app for you courageous students") + AnnotatedString("! Click the button below to read more about this App"),
+                AnnotatedString("Welcome to ") +
+                        AnnotatedString("ErasmusBuddy", SpanStyle(color = Blue80, fontFamily = FontFamily(Font(R.font.poppins_extra_bold)))) +
+                        AnnotatedString("! This is the app for you courageous students") + AnnotatedString("! Click the button below to read more about this App"),
                 fontFamily = FontFamily(Font(R.font.poppins_regular)),
                 fontSize = 20.sp,
                 color = Color.White,
@@ -58,13 +61,11 @@ fun WelcomeScreen(onNavigateToAboutScreen: () -> Unit) {
                 modifier = Modifier.padding(16.dp),
             )
 
-            Button(onClick = { onNavigateToAboutScreen() }) {
-                Text(
-                    text = "Navigate to AboutScreen",
-                    modifier = Modifier
-                        .padding(horizontal = 5.dp, vertical = 5.dp)
-                )
-            }
+            MyBtn(
+                text = "Navigate to AboutScreen",
+                onClick = { onNavigateToAboutScreen() },
+                backgroundColor = Blue80
+            )
         }
 
     }
