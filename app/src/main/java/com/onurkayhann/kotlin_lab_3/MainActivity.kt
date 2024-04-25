@@ -42,9 +42,12 @@ class MainActivity : ComponentActivity() {
 
 /*
  *  TODO:
- *      - font
- *      - logo
+ *      - add reusable buttons to all screens
+ *      - create card for forms
+ *      - add reusable cards next to each other as in RegisterScreen, do the same for LoginScreen
+ *      - font✅
+ *      - logo✅
  *      - theme
- *      - colors
+ *      - colors✅
  *      - user shouldn't be able to register with existing username
 */

@@ -72,7 +72,6 @@ fun AboutScreen(onNavigateToLoginScreen: () -> Unit) {
         MyBtn(
             text = "Navigate to LoginScreen",
             onClick = { onNavigateToLoginScreen() },
-            backgroundColor = Blue80
         )
     }
 

@@ -79,7 +79,6 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
         MyBtn(
             text = "Login",
             onClick = { userLogin() },
-            backgroundColor = Blue80
         )
 
         Spacer(modifier = Modifier.height(15.dp))

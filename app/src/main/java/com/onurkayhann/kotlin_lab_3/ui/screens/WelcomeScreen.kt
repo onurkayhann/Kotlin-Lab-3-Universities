@@ -64,7 +64,6 @@ fun WelcomeScreen(onNavigateToAboutScreen: () -> Unit) {
             MyBtn(
                 text = "Navigate to AboutScreen",
                 onClick = { onNavigateToAboutScreen() },
-                backgroundColor = Blue80
             )
         }
 
