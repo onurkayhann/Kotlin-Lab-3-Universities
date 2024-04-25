@@ -45,9 +45,12 @@ class MainActivity : ComponentActivity() {
  *      - add reusable buttons to all screens
  *      - create card for forms
  *      - add reusable cards next to each other as in RegisterScreen, do the same for LoginScreen
+ *      - change MyBtn to PrimaryBtn and MyBtnTwo to SecondaryBtn
  *      - font✅
  *      - logo✅
  *      - theme
+ *      - connect to database --> RoomDB or Firebase --> Entity?? Ask Kristoffer!
+ *      - user must be able to add, delete and edit
  *      - colors✅
  *      - user shouldn't be able to register with existing username
 */
