@@ -46,6 +46,7 @@ class MainActivity : ComponentActivity() {
  *      - create card for forms
  *      - add reusable cards next to each other as in RegisterScreen, do the same for LoginScreen
  *      - change MyBtn to PrimaryBtn and MyBtnTwo to SecondaryBtn
+ *      - add icons to input fields
  *      - font✅
  *      - logo✅
  *      - theme
