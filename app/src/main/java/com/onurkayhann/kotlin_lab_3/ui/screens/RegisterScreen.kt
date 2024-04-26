@@ -64,6 +64,8 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
             .background(BlackBlue80)
     ) {
 
+
+
         CompanyLogo()
 
         Text(

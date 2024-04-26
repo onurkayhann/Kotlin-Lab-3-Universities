@@ -49,6 +49,7 @@ class MainActivity : ComponentActivity() {
  *      - add icons to input fields
  *      - font✅
  *      - logo✅
+ *      - email for users?
  *      - theme
  *      - connect to database --> RoomDB or Firebase --> Entity?? Ask Kristoffer!
  *      - user must be able to add, delete and edit
