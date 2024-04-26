@@ -55,4 +55,6 @@ class MainActivity : ComponentActivity() {
  *      - user must be able to add, delete and edit
  *      - colors✅
  *      - user shouldn't be able to register with existing username
+ *      - add darker gray or shadow?
+ *      - make card with less width, also blue button with less width
 */

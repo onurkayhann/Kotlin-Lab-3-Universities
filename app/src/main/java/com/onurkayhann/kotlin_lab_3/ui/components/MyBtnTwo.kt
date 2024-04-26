@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
+import com.onurkayhann.kotlin_lab_3.ui.theme.White80
 
 @Composable
 fun MyBtnTwo(
@@ -31,11 +32,11 @@ fun MyBtnTwo(
             .padding(horizontal = 5.dp, vertical = 5.dp)
             .width(120.dp)
             .height(50.dp)
-            .border(1.dp, color = Gray80, shape = RoundedCornerShape(20.dp))
+            .border(1.dp, color = White80, shape = RoundedCornerShape(20.dp))
     ) {
         Text(
             text = text,
-            color = Gray80,
+            color = White80,
             fontSize = 16.sp,
             fontFamily = FontFamily(Font(R.font.poppins_regular))
         )
