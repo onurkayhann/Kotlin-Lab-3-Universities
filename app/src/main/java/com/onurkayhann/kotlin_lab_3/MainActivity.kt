@@ -31,8 +31,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // UniversityUI(universityViewModel) // This calls all the apis
-                    Home()
+                    UniversityUI(universityViewModel) // This calls all the apis
+                    // Home()
                 }
             }
         }
