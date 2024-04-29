@@ -33,6 +33,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -91,7 +92,7 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
         )
 
         Card(
-            shape = RoundedCornerShape(14.dp),
+            shape = RoundedCornerShape(20.dp),
             colors = CardDefaults.cardColors(
                 containerColor = Gray80,
             ),
@@ -118,7 +119,10 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                     textStyle = TextStyle(color = Color.White),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = Blue80,
+                        focusedContainerColor = BlackBlue80,
+                        unfocusedContainerColor = BlackBlue80,
                     ),
+                    shape = RoundedCornerShape(25.dp),
                     modifier = Modifier
                         .width(320.dp)
                 )
@@ -134,7 +138,10 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                     textStyle = TextStyle(color = Blue80),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = Blue80,
+                        focusedContainerColor = BlackBlue80,
+                        unfocusedContainerColor = BlackBlue80
                     ),
+                    shape = RoundedCornerShape(25.dp),
                     modifier = Modifier
                         .width(320.dp)
                 )
@@ -150,7 +157,10 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                     textStyle = TextStyle(color = Blue80),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = Blue80,
+                        focusedContainerColor = BlackBlue80,
+                        unfocusedContainerColor = BlackBlue80
                     ),
+                    shape = RoundedCornerShape(25.dp),
                     modifier = Modifier
                         .width(320.dp)
                 )

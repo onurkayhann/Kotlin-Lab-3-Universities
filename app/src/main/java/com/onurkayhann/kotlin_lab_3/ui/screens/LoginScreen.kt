@@ -64,7 +64,7 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
     }
 
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
@@ -88,7 +88,7 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                 color = Color.White
             )
             Card(
-                shape = RoundedCornerShape(14.dp),
+                shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = Gray80,
                 ),
@@ -116,7 +116,10 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                         textStyle = TextStyle(color = Color.White),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = Blue80,
+                            focusedContainerColor = BlackBlue80,
+                            unfocusedContainerColor = BlackBlue80
                         ),
+                        shape = RoundedCornerShape(25.dp),
                         modifier = Modifier
                             .width(320.dp)
                             .padding(vertical = 10.dp)
@@ -133,7 +136,10 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                         textStyle = TextStyle(color = Blue80),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = Blue80,
+                            focusedContainerColor = BlackBlue80,
+                            unfocusedContainerColor = BlackBlue80
                         ),
+                        shape = RoundedCornerShape(25.dp),
                         modifier = Modifier
                             .width(320.dp)
                             .padding(bottom = 10.dp)
@@ -154,7 +160,7 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                         )
 
                         MyBtnTwo(
-                            text = "Or Register",
+                            text = "Sign Up",
                             onClick = { onNavigateToRegisterScreen() },
                             backgroundColor = BlackBlue80
                         )

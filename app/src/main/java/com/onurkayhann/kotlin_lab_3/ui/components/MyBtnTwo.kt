@@ -32,7 +32,7 @@ fun MyBtnTwo(
             .padding(horizontal = 5.dp, vertical = 5.dp)
             .width(120.dp)
             .height(50.dp)
-            .border(1.dp, color = White80, shape = RoundedCornerShape(20.dp))
+            .border(1.dp, color = White80, shape = RoundedCornerShape(25.dp))
     ) {
         Text(
             text = text,
