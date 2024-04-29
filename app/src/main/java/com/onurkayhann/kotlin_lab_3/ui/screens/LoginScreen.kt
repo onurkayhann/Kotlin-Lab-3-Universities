@@ -44,6 +44,7 @@ import com.onurkayhann.kotlin_lab_3.ui.components.MyBtnTwo
 import com.onurkayhann.kotlin_lab_3.ui.models.users
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
+import com.onurkayhann.kotlin_lab_3.ui.theme.Gray40
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
 import com.onurkayhann.kotlin_lab_3.ui.theme.White80
 
@@ -163,7 +164,7 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                         MyBtnTwo(
                             text = "Sign Up",
                             onClick = { onNavigateToRegisterScreen() },
-                            backgroundColor = BlackBlue80
+                            backgroundColor = Gray40
                         )
 
                     }
