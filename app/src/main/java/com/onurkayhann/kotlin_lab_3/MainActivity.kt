@@ -43,8 +43,8 @@ class MainActivity : ComponentActivity() {
 /*
  *  TODO:
  *      - add reusable buttons to all screens
- *      - create card for forms
- *      - add reusable cards next to each other as in RegisterScreen, do the same for LoginScreen
+ *      - create card for forms✅
+ *      - add reusable cards next to each other as in RegisterScreen, do the same for LoginScreen✅
  *      - change MyBtn to PrimaryBtn and MyBtnTwo to SecondaryBtn
  *      - add icons to input fields
  *      - font✅

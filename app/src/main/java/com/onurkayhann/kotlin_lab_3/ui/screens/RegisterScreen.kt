@@ -3,6 +3,7 @@ package com.onurkayhann.kotlin_lab_3.ui.screens
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -52,6 +53,7 @@ import com.onurkayhann.kotlin_lab_3.ui.models.User
 import com.onurkayhann.kotlin_lab_3.ui.models.users
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
+import com.onurkayhann.kotlin_lab_3.ui.theme.Gray40
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
 import com.onurkayhann.kotlin_lab_3.ui.theme.White80
 
@@ -92,13 +94,15 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
         )
 
         Card(
-            shape = RoundedCornerShape(20.dp),
+           shape = RoundedCornerShape(20.dp),
+            border = BorderStroke(2.dp, Gray80),
             colors = CardDefaults.cardColors(
-                containerColor = Gray80,
+                containerColor = Gray80.copy(alpha = 0.85f),
             ),
             modifier = Modifier
-                .padding(horizontal = 20.dp, vertical = 10.dp
-                )
+                .padding(horizontal = 20.dp, vertical = 10.dp)
+                .shadow(16.dp)
+
         ) {
 
             Column(
@@ -106,7 +110,6 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .padding(horizontal = 25.dp)
-                    .width(340.dp)
             ) {
 
                 Spacer(modifier = Modifier.height(10.dp))
