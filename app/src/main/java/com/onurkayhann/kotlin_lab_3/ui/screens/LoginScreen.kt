@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -27,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -106,6 +108,13 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                     Spacer(modifier = Modifier.height(10.dp))
 
                     OutlinedTextField(
+                        leadingIcon = {
+                                      Icon(
+                                          painter = painterResource(id = R.drawable.baseline_person_24),
+                                          contentDescription = "",
+                                          tint = Blue80
+                                      )
+                        },
                         value = username,
                         onValueChange = { username = it },
                         label = { Text(text = "Enter username") },
@@ -113,6 +122,7 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                         textStyle = TextStyle(color = Color.White),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = Blue80,
+                            unfocusedBorderColor = BlackBlue80,
                             focusedContainerColor = BlackBlue80,
                             unfocusedContainerColor = BlackBlue80
                         ),
@@ -125,6 +135,13 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                     Spacer(modifier = Modifier.height(10.dp)) // add line break
 
                     OutlinedTextField(
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_lock_24),
+                                contentDescription = "",
+                                tint = Blue80
+                            )
+                        },
                         value = password,
                         onValueChange = { password = it },
                         label = { Text(text = "Enter password") },
@@ -133,6 +150,7 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                         textStyle = TextStyle(color = Blue80),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = Blue80,
+                            unfocusedBorderColor = BlackBlue80,
                             focusedContainerColor = BlackBlue80,
                             unfocusedContainerColor = BlackBlue80
                         ),
