@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.onurkayhann.kotlin_lab_3.R
+import com.onurkayhann.kotlin_lab_3.ui.theme.Gray40
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
 import com.onurkayhann.kotlin_lab_3.ui.theme.White80
 
@@ -23,11 +24,10 @@ import com.onurkayhann.kotlin_lab_3.ui.theme.White80
 fun MyBtnTwo(
     text: String,
     onClick: () -> Unit,
-    backgroundColor: Color,
 ) {
     Button(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(backgroundColor),
+        colors = ButtonDefaults.buttonColors(Gray40),
         modifier = Modifier
             .padding(horizontal = 5.dp, vertical = 5.dp)
             .width(120.dp)

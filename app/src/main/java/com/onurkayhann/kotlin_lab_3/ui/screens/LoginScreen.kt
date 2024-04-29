@@ -164,7 +164,6 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                         MyBtnTwo(
                             text = "Sign Up",
                             onClick = { onNavigateToRegisterScreen() },
-                            backgroundColor = Gray40
                         )
 
                     }

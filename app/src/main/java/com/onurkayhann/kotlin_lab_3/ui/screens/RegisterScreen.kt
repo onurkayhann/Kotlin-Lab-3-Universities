@@ -203,7 +203,7 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                     },
                 )
 
-                MyBtnTwo(text = "Or Login", onClick = { onNavigateToLoginScreen() }, backgroundColor = Gray40)
+                MyBtnTwo(text = "Or Login", onClick = { onNavigateToLoginScreen() })
 
             }
         }
