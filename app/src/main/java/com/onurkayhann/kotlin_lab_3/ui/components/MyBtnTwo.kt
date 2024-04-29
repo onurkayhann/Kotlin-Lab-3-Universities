@@ -10,18 +10,16 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray40
-import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
 import com.onurkayhann.kotlin_lab_3.ui.theme.White80
 
 @Composable
-fun MyBtnTwo(
+fun SecondaryBtn(
     text: String,
     onClick: () -> Unit,
 ) {

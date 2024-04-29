@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
-import com.onurkayhann.kotlin_lab_3.ui.components.MyBtn
+import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 
@@ -69,7 +69,7 @@ fun AboutScreen(onNavigateToLoginScreen: () -> Unit) {
         
         Spacer(modifier = Modifier.height(30.dp))
 
-        MyBtn(
+        PrimaryBtn(
             text = "Navigate to LoginScreen",
             onClick = { onNavigateToLoginScreen() },
         )
