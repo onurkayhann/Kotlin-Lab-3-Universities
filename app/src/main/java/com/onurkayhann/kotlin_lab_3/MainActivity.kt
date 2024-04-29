@@ -42,11 +42,11 @@ class MainActivity : ComponentActivity() {
 
 /*
  *  TODO:
- *      - add reusable buttons to all screens
+ *      - add reusable buttons to all screens✅
  *      - create card for forms✅
  *      - add reusable cards next to each other as in RegisterScreen, do the same for LoginScreen✅
- *      - change MyBtn to PrimaryBtn and MyBtnTwo to SecondaryBtn
- *      - add icons to input fields
+ *      - change MyBtn to PrimaryBtn and MyBtnTwo to SecondaryBtn✅
+ *      - add icons to input fields✅
  *      - font✅
  *      - logo✅
  *      - email for users?
@@ -55,6 +55,6 @@ class MainActivity : ComponentActivity() {
  *      - user must be able to add, delete and edit
  *      - colors✅
  *      - user shouldn't be able to register with existing username
- *      - add darker gray or shadow?
+ *      - add darker gray or shadow?✅
  *      - make card with less width, also blue button with less width
 */
