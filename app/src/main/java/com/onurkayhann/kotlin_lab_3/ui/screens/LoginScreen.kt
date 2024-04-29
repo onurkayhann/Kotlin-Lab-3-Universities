@@ -17,6 +17,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
@@ -40,6 +42,7 @@ import com.onurkayhann.kotlin_lab_3.ui.models.users
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
+import com.onurkayhann.kotlin_lab_3.ui.theme.White80
 
 @Composable
 fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScreen: (String) -> Unit) {
@@ -84,75 +87,84 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
                 fontSize = 30.sp,
                 color = Color.White
             )
-        }
-
-        Card(
-            shape = RoundedCornerShape(14.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = Gray80,
-            ),
-            modifier = Modifier
-                .padding(
-                    horizontal = 20.dp, vertical = 10.dp
-                )
-        ) {
-
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
+            Card(
+                shape = RoundedCornerShape(14.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Gray80,
+                ),
                 modifier = Modifier
-                    .padding(horizontal = 25.dp)
-                    .width(340.dp)
+                    .padding(
+                        horizontal = 20.dp, vertical = 10.dp
+                    )
             ) {
 
-                Spacer(modifier = Modifier.height(10.dp))
-
-                OutlinedTextField(
-                    value = username,
-                    onValueChange = { username = it },
-                    label = { Text(text = "Enter username") },
-                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
-                        .width(320.dp)
-                )
-
-                Spacer(modifier = Modifier.height(10.dp)) // add line break
-
-                OutlinedTextField(
-                    value = password,
-                    onValueChange = { password = it },
-                    label = { Text(text = "Enter password") },
-                    visualTransformation = PasswordVisualTransformation(),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                    modifier = Modifier
-                        .width(320.dp)
-                )
-
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Row(
-                    horizontalArrangement = Arrangement.Absolute.Center,
-                    verticalAlignment = Alignment.Top,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 5.dp)
+                        .padding(horizontal = 25.dp)
+                        .width(340.dp)
                 ) {
-                    MyBtn(
-                        text = "Login",
-                        onClick = { userLogin() },
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    OutlinedTextField(
+                        value = username,
+                        onValueChange = { username = it },
+                        label = { Text(text = "Enter username") },
+                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
+                        textStyle = TextStyle(color = Color.White),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = Blue80,
+                        ),
+                        modifier = Modifier
+                            .width(320.dp)
+                            .padding(vertical = 10.dp)
                     )
 
-                    MyBtnTwo(
-                        text = "Or Register",
-                        onClick = { onNavigateToRegisterScreen() },
-                        backgroundColor = BlackBlue80
+                    Spacer(modifier = Modifier.height(10.dp)) // add line break
+
+                    OutlinedTextField(
+                        value = password,
+                        onValueChange = { password = it },
+                        label = { Text(text = "Enter password") },
+                        visualTransformation = PasswordVisualTransformation(),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                        textStyle = TextStyle(color = Blue80),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = Blue80,
+                        ),
+                        modifier = Modifier
+                            .width(320.dp)
+                            .padding(bottom = 10.dp)
                     )
 
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    Row(
+                        horizontalArrangement = Arrangement.Absolute.Center,
+                        verticalAlignment = Alignment.Top,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 5.dp)
+                    ) {
+                        MyBtn(
+                            text = "Login",
+                            onClick = { userLogin() },
+                        )
+
+                        MyBtnTwo(
+                            text = "Or Register",
+                            onClick = { onNavigateToRegisterScreen() },
+                            backgroundColor = BlackBlue80
+                        )
+
+                    }
                 }
+
             }
-
-
         }
+
     }
 }
 

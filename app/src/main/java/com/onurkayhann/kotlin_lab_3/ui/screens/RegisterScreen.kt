@@ -22,7 +22,10 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
@@ -104,16 +108,17 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                     .width(340.dp)
             ) {
 
-
                 Spacer(modifier = Modifier.height(10.dp))
-
-
 
                 OutlinedTextField(
                     value = username,
                     onValueChange = { username = it },
                     label = { Text("Enter Username") },
                     keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
+                    textStyle = TextStyle(color = Color.White),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Blue80,
+                    ),
                     modifier = Modifier
                         .width(320.dp)
                 )
@@ -126,6 +131,10 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                     label = { Text("Enter Password") },
                     visualTransformation = PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    textStyle = TextStyle(color = Blue80),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Blue80,
+                    ),
                     modifier = Modifier
                         .width(320.dp)
                 )
@@ -138,6 +147,10 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                     label = { Text(text = "Confirm password") },
                     visualTransformation = PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    textStyle = TextStyle(color = Blue80),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Blue80,
+                    ),
                     modifier = Modifier
                         .width(320.dp)
                 )
