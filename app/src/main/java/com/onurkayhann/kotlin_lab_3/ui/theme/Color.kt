@@ -13,5 +13,6 @@ val Pink40 = Color(0xFF7D5260)
 // My colors
 val BlackBlue80 = Color(0xFF222834)
 val Gray80 = Color(0xFF333A44)
+val Gray40 = Color(0xFF2C323B) // this maybe?
 val White80 = Color(0xFFD1D9E0)
 val Blue80 = Color( 0xFF536DFE)

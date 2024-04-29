@@ -71,8 +71,6 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
     ) {
         CompanyLogo()
 
-
-
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -85,16 +83,17 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
             text = "Register",
             fontFamily = FontFamily(Font(R.font.poppins_extra_bold)),
             fontSize = 30.sp,
-            color = White80
+            color = Color.White
         )
 
         Card(
-
+            shape = RoundedCornerShape(14.dp),
             colors = CardDefaults.cardColors(
                 containerColor = Gray80,
             ),
             modifier = Modifier
-                .padding(horizontal = 20.dp, vertical = 10.dp)
+                .padding(horizontal = 20.dp, vertical = 10.dp
+                )
         ) {
 
             Column(
@@ -102,6 +101,7 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .padding(horizontal = 25.dp)
+                    .width(340.dp)
             ) {
 
 
