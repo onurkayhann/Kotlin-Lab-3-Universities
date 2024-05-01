@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,6 +23,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
 import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
@@ -31,7 +31,7 @@ import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 
 @Composable
-fun AboutScreen(onNavigateToLoginScreen: () -> Unit) {
+fun AboutScreen(navController: NavController) {
 
     Column(
         verticalArrangement = Arrangement.Top,
@@ -71,7 +71,7 @@ fun AboutScreen(onNavigateToLoginScreen: () -> Unit) {
 
         PrimaryBtn(
             text = "Navigate to LoginScreen",
-            onClick = { onNavigateToLoginScreen() },
+            onClick = { navController.navigate("loginScreen") },
         )
     }
 

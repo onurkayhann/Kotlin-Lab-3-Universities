@@ -36,17 +36,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
 import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
 import com.onurkayhann.kotlin_lab_3.ui.components.SecondaryBtn
-import com.onurkayhann.kotlin_lab_3.ui.models.users
+import com.onurkayhann.kotlin_lab_3.ui.models.user.users
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
 
 @Composable
-fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScreen: (String) -> Unit) {
+fun LoginScreen(navController: NavController) {
 
     // user values
     var username by remember { mutableStateOf("") }
@@ -58,7 +59,7 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
 
         if (user != null) {
             println("Login successful for user: $username")
-            onNavigateToLoggedInScreen(username)
+
         } else {
             println("Invalid username or password")
         }
@@ -176,7 +177,7 @@ fun LoginScreen(onNavigateToRegisterScreen: () -> Unit, onNavigateToLoggedInScre
 
                         SecondaryBtn(
                             text = "Sign Up",
-                            onClick = { onNavigateToRegisterScreen() },
+                            onClick = { navController.navigate("registerScreen") },
                         )
 
                     }

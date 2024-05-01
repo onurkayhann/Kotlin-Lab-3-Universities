@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,25 +41,35 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
 import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
 import com.onurkayhann.kotlin_lab_3.ui.components.SecondaryBtn
-import com.onurkayhann.kotlin_lab_3.ui.models.User
-import com.onurkayhann.kotlin_lab_3.ui.models.users
+import com.onurkayhann.kotlin_lab_3.ui.models.user.User
+import com.onurkayhann.kotlin_lab_3.ui.models.user.UserRepository
+import com.onurkayhann.kotlin_lab_3.ui.models.user.users
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
-@RequiresApi(Build.VERSION_CODES.Q)
+// @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
-fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
+fun RegisterScreen(
+    navController: NavController,
+    userRepository: UserRepository
+) {
 
     // user values
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+
+    // Get the current coroutine scope
+    val coroutineScope = rememberCoroutineScope()
 
     Column(
         verticalArrangement = Arrangement.Top,
@@ -201,26 +212,30 @@ fun RegisterScreen(onNavigateToLoginScreen: () -> Unit) {
                     text = "Register",
                     onClick = {
                         if (username.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
-                            users.add(User(username, password))
-                            println("user registered: $username")
+                            userRepository.performDatabaseOperation(Dispatchers.IO) {
+                            val user = User(username, password)
+                                userRepository.insertOrUpdateUser(user)
+                                println("user registered: $username")
 
-                            // loop through users
-                            for (user in users) {
-                                println(user)
+                                username = ""
+                                password = ""
+                                confirmPassword = ""
+
+                                // Find all users
+                                userRepository.performDatabaseOperation(Dispatchers.Main) {
+                                    userRepository.findAllUsers().collect {
+                                        println(it)
+                                    }
+                                }
                             }
-
-                            username = ""
-                            password = ""
-                            confirmPassword = ""
-
                         } else {
                             println("Password mismatch")
                             // TODO: Toast
                         }
-                    },
+                    }
                 )
 
-                SecondaryBtn(text = "Or Login", onClick = { onNavigateToLoginScreen() })
+                SecondaryBtn(text = "Or Login", onClick = { navController.navigate("loginScreen") })
 
             }
         }

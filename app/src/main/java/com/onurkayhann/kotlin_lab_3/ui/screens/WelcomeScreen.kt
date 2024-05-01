@@ -20,6 +20,8 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
 import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
@@ -28,7 +30,7 @@ import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
-fun WelcomeScreen(onNavigateToAboutScreen: () -> Unit) {
+fun WelcomeScreen(navController: NavController) {
 
     Column(
         verticalArrangement = Arrangement.Top,
@@ -62,7 +64,7 @@ fun WelcomeScreen(onNavigateToAboutScreen: () -> Unit) {
 
             PrimaryBtn(
                 text = "Navigate to AboutScreen",
-                onClick = { onNavigateToAboutScreen() },
+                onClick = { navController.navigate("aboutScreen") },
             )
         }
 
