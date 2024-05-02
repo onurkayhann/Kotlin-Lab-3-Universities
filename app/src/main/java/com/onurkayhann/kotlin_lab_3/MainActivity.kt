@@ -63,4 +63,5 @@ class MainActivity : ComponentActivity() {
  *      - add darker gray or shadow?✅
  *      - make card with less width, also blue button with less width
  *      - add Toast to different situations
+ *      - SignedInScreen --> Trending Universities (show 5 randomly universities) --> button for Edit Profile, button for Explore Universities, and there should universities be rendered with search input field
 */
