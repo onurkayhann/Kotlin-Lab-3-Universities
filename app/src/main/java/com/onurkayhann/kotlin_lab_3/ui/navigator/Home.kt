@@ -1,6 +1,7 @@
 package com.onurkayhann.kotlin_lab_3.ui.navigator
 
 import android.os.Build
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
@@ -11,12 +12,18 @@ import com.onurkayhann.kotlin_lab_3.ui.screens.AboutScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.LoggedInScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.LoginScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.RegisterScreen
+import com.onurkayhann.kotlin_lab_3.ui.screens.UniversityListScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.WelcomeScreen
+import com.onurkayhann.kotlin_lab_3.viewModels.UniversityViewModel
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
-fun Home(userRepository: UserRepository) {
+fun Home(
+    userRepository: UserRepository,
+    universityViewModel: UniversityViewModel) {
+
     val navController = rememberNavController()
+
 
     NavHost(navController = navController, startDestination = "welcomeScreen") {
         composable("welcomeScreen") { WelcomeScreen(navController) }
@@ -25,9 +32,10 @@ fun Home(userRepository: UserRepository) {
         composable("loginScreen") {
             LoginScreen(navController, userRepository)
         }
+        composable("universityListScreen") { UniversityListScreen(universityViewModel) }
         composable("loggedInScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")
-            username?.let { LoggedInScreen(username = it) }
+            username?.let { LoggedInScreen(navController, username = it) }
         }
     }
 }

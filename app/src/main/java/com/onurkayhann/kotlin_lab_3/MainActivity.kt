@@ -42,8 +42,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // UniversityUI(universityViewModel) // This calls all the apis
-                    Home(userRepository = userRepository)
+                    Home(userRepository, universityViewModel)
                 }
             }
         }
@@ -57,11 +56,14 @@ class MainActivity : ComponentActivity() {
  *      - add reusable cards next to each other as in RegisterScreen, do the same for LoginScreen✅
  *      - email for users?
  *      - theme
- *      - connect to database --> RoomDB or Firebase --> Entity?? Ask Kristoffer!
  *      - user must be able to add, delete and edit
  *      - user shouldn't be able to register with existing username
- *      - add darker gray or shadow?✅
  *      - make card with less width, also blue button with less width
  *      - add Toast to different situations
- *      - SignedInScreen --> Trending Universities (show 5 randomly universities) --> button for Edit Profile, button for Explore Universities, and there should universities be rendered with search input field
+ *      - SignedInScreen:
+ *          --> Trending Universities (show 5 randomly universities) with cards moving automatically to the left
+ *          --> button for Edit Profile,
+ *          --> button for Explore Universities,
+ *          --> and there should universities be rendered with search input field
+ *          --> Add User Profile Picture? Instead of CompanyLogo
 */
