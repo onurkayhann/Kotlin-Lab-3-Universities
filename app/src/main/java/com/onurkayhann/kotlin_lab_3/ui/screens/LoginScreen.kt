@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,27 +42,41 @@ import com.onurkayhann.kotlin_lab_3.R
 import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
 import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
 import com.onurkayhann.kotlin_lab_3.ui.components.SecondaryBtn
-import com.onurkayhann.kotlin_lab_3.ui.models.user.users
+import com.onurkayhann.kotlin_lab_3.ui.models.user.UserRepository
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(
+    navController: NavController,
+    userRepository: UserRepository
+) {
 
     // user values
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    // function for login && checking if username/password matches
-    fun userLogin() {
-        val user = users.find { it.username == username && it.password == password }
+    val coroutineScope = rememberCoroutineScope()
 
-        if (user != null) {
-            println("Login successful for user: $username")
+    fun userLogin(navController: NavController, username: String) {
+        coroutineScope.launch(Dispatchers.IO) {
 
-        } else {
-            println("Invalid username or password")
+            // val user = users.find { it.username == username && it.password == password }
+            val user = userRepository.findUser(username, password)
+
+            if (user != null) {
+                println("Login successful for user: $username")
+                withContext(Dispatchers.Main) {
+                    navController.navigate("loggedInScreen/$username")
+                }
+            } else {
+                println("Invalid username or password")
+                // TODO - add Toast
+            }
         }
     }
 
@@ -172,7 +187,7 @@ fun LoginScreen(navController: NavController) {
                     ) {
                         PrimaryBtn(
                             text = "Login",
-                            onClick = { userLogin() },
+                            onClick = { userLogin(navController, username) },
                         )
 
                         SecondaryBtn(

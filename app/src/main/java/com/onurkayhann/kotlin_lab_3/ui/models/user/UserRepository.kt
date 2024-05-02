@@ -16,6 +16,10 @@ class UserRepository(
         myDatabase.userDao().insertOrUpdateUser(user)
     }
 
+    // FIND USER BY USERNAME && PASSWORDS
+    fun findUser(username: String, password: String): User? {
+        return myDatabase.userDao().findUser(username, password)
+    }
 
     fun findAllUsers(): Flow<List<User>> {
         return myDatabase.userDao().findAllUsers()

@@ -13,7 +13,6 @@ import com.onurkayhann.kotlin_lab_3.ui.screens.LoginScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.RegisterScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.WelcomeScreen
 
-//@RequiresApi(Build.VERSION_CODES.Q)
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun Home(userRepository: UserRepository) {
@@ -24,13 +23,11 @@ fun Home(userRepository: UserRepository) {
         composable("aboutScreen") { AboutScreen(navController) }
         composable("registerScreen") { RegisterScreen(navController, userRepository) }
         composable("loginScreen") {
-            LoginScreen(
-                navController
-            )
+            LoginScreen(navController, userRepository)
         }
         composable("loggedInScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")
-            LoggedInScreen(username = username ?: "")
+            username?.let { LoggedInScreen(username = it) }
         }
     }
 }

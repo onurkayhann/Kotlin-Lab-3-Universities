@@ -1,6 +1,7 @@
 package com.onurkayhann.kotlin_lab_3.ui.screens
 
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
@@ -55,6 +56,7 @@ import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 // @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
@@ -241,7 +243,7 @@ fun RegisterScreen(
         }
     }
 
-
-
     }
 }
+
+
