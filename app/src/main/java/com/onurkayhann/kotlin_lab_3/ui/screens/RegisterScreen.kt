@@ -215,7 +215,7 @@ fun RegisterScreen(
                     onClick = {
                         if (username.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
                             userRepository.performDatabaseOperation(Dispatchers.IO) {
-                            val user = User(username, password)
+                            val user = User(username, password, null)
                                 userRepository.insertOrUpdateUser(user)
                                 println("user registered: $username")
 

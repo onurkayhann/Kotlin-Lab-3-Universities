@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.onurkayhann.kotlin_lab_3.api.University
 import com.onurkayhann.kotlin_lab_3.ui.models.user.User
 import com.onurkayhann.kotlin_lab_3.ui.models.user.UserDAO
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, University::class /* Remove here if app crashes */], version = 3)
 abstract class MyDatabase : RoomDatabase() {
 
     abstract fun userDao() : UserDAO
@@ -22,11 +25,35 @@ abstract class MyDatabase : RoomDatabase() {
                     context.applicationContext,
                     MyDatabase::class.java,
                     "my-app-db"
-                ).build()
+                )
+                    .addMigrations(MIGRATION_2_3)
+                    .build()
                 INSTANCE = instance
                 instance
             }
         }
-    }
 
-}
+        // Migration from version 2 to 3
+        private val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+
+                db.execSQL("DROP TABLE IF EXISTS universities")
+
+                // Create the universities table if it doesn't exist
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS universities (" +
+                            "name TEXT NOT NULL," +
+                            "country TEXT NOT NULL," +
+                            "id INTEGER PRIMARY KEY AUTOINCREMENT NULL" + // Ensure id is not nullable
+                            ")"
+                )
+
+                // Add the universityList column to the users table
+                db.execSQL("ALTER TABLE users ADD COLUMN universityList TEXT")
+
+                // You can also set default value to null for existing rows
+                //db.execSQL("UPDATE users SET universityList = NULL WHERE universityList IS NULL")
+            }
+        }
+    }
+    }

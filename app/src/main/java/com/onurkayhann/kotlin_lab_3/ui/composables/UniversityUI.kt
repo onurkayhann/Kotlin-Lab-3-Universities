@@ -24,25 +24,37 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.onurkayhann.kotlin_lab_3.viewModels.UniversityViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.onurkayhann.kotlin_lab_3.api.University
 import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
 import com.onurkayhann.kotlin_lab_3.ui.components.SecondaryBtn
+import com.onurkayhann.kotlin_lab_3.ui.models.user.User
+import com.onurkayhann.kotlin_lab_3.ui.models.user.UserRepository
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
 import com.onurkayhann.kotlin_lab_3.ui.theme.White80
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @Composable
-fun UniversityUI(viewModel: UniversityViewModel = viewModel()) {
+fun UniversityUI(
+    viewModel: UniversityViewModel = viewModel(),
+    userRepository: UserRepository,
+) { // comment out if it crashes
     var country by remember { mutableStateOf("") } // State for user input
+    val coroutineScope = rememberCoroutineScope()
 
     Column(
         verticalArrangement = Arrangement.Top,
@@ -119,7 +131,14 @@ fun UniversityUI(viewModel: UniversityViewModel = viewModel()) {
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp)
                         ) {
-                            PrimaryBtn(text = "Enroll", onClick = { /* TODO */ })
+                            PrimaryBtn(text = "Enroll", onClick = {
+                                coroutineScope.launch {
+                                    val currentUser = userRepository.findUser("onur", "123")
+                                    if (currentUser != null) {
+                                        userRepository.addUniversityToUser(currentUser.id ?: -1, university)
+                                    }
+                                }
+                            })
                             Spacer(modifier = Modifier.width(8.dp))
                             SecondaryBtn(text = "Read More", onClick = { /* TODO */ })
                         }

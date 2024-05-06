@@ -65,7 +65,6 @@ fun LoginScreen(
     fun userLogin(navController: NavController, username: String) {
         coroutineScope.launch(Dispatchers.IO) {
 
-            // val user = users.find { it.username == username && it.password == password }
             val user = userRepository.findUser(username, password)
 
             if (user != null) {

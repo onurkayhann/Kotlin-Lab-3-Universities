@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.onurkayhann.kotlin_lab_3.api.University
 import com.onurkayhann.kotlin_lab_3.api.UniversityRetrofit
+import com.onurkayhann.kotlin_lab_3.ui.models.user.UserRepository
 import kotlinx.coroutines.launch
 
 class UniversityViewModel : ViewModel() {

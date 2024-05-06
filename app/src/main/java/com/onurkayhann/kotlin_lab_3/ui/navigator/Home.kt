@@ -1,7 +1,6 @@
 package com.onurkayhann.kotlin_lab_3.ui.navigator
 
 import android.os.Build
-import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
@@ -20,7 +19,8 @@ import com.onurkayhann.kotlin_lab_3.viewModels.UniversityViewModel
 @Composable
 fun Home(
     userRepository: UserRepository,
-    universityViewModel: UniversityViewModel) {
+    universityViewModel: UniversityViewModel,
+) {
 
     val navController = rememberNavController()
 
@@ -32,7 +32,7 @@ fun Home(
         composable("loginScreen") {
             LoginScreen(navController, userRepository)
         }
-        composable("universityListScreen") { UniversityListScreen(universityViewModel) }
+        composable("universityListScreen") { UniversityListScreen(universityViewModel, userRepository) } // comment out if it crashes
         composable("loggedInScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")
             username?.let { LoggedInScreen(navController, username = it) }

@@ -1,5 +1,6 @@
 package com.onurkayhann.kotlin_lab_3.ui.models.user
 
+import com.onurkayhann.kotlin_lab_3.api.University
 import com.onurkayhann.kotlin_lab_3.db.MyDatabase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -23,6 +24,13 @@ class UserRepository(
 
     fun findAllUsers(): Flow<List<User>> {
         return myDatabase.userDao().findAllUsers()
+    }
+
+    // comment out if it crashes
+    suspend fun addUniversityToUser(userId: Long, university: University) {
+        coroutineScope.launch {
+            myDatabase.userDao().addUniversityToUser(userId, university)
+        }
     }
 
     fun performDatabaseOperation(dispatcher: CoroutineDispatcher, databaseOperation: suspend () -> Unit) {
