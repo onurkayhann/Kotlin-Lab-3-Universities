@@ -18,6 +18,3 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     var id: Long? = null
 }
-
-// User List
-val users = mutableStateListOf<User>()
