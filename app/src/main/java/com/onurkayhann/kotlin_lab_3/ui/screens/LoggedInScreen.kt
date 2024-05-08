@@ -73,6 +73,7 @@ fun LoggedInScreen(navController: NavController, username: String) {
 
             Spacer(modifier = Modifier.height(10.dp))
 
+
             Row(
                 horizontalArrangement = Arrangement.Absolute.Center,
                 verticalAlignment = Alignment.Top,
@@ -81,12 +82,12 @@ fun LoggedInScreen(navController: NavController, username: String) {
                     .padding(vertical = 5.dp)
             ) {
                 PrimaryBtn(
-                    text = "Explore Universities",
+                    text = "Find Universities",
                     onClick = { navController.navigate("universityListScreen/$username") },
                 )
 
                 SecondaryBtn(
-                    text = "Edit Profile",
+                    text = "Profile",
                     onClick = { /* TODO */ },
                 )
 
