@@ -24,9 +24,7 @@ fun Home(
     universityViewModel: UniversityViewModel,
     context: Context
 ) {
-
     val navController = rememberNavController()
-
 
     NavHost(navController = navController, startDestination = "welcomeScreen") {
         composable("welcomeScreen") { WelcomeScreen(navController) }
@@ -40,7 +38,6 @@ fun Home(
             val username = backStackEntry.arguments?.getString("username")
             username?.let { UniversityListScreen(universityViewModel,userRepository, username = it) }
         }
-
 
         composable("loggedInScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")

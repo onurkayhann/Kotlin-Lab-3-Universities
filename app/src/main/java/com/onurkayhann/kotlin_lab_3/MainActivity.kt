@@ -64,4 +64,5 @@ class MainActivity : ComponentActivity() {
  *          --> and there should universities be rendered with search input field
  *          --> Add User Profile Picture? Instead of CompanyLogo
  *      - add right arrow to 'Read More' and 'Go to Login' button
+ *      - delete UniversityDAO and UniversityRepository?
 */
