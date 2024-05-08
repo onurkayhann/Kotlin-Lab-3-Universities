@@ -70,7 +70,7 @@ fun AboutScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(30.dp))
 
         PrimaryBtn(
-            text = "Navigate to LoginScreen",
+            text = "Go to Login",
             onClick = { navController.navigate("loginScreen") },
         )
     }

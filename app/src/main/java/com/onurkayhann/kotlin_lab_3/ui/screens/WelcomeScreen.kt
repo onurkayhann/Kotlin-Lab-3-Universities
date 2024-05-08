@@ -63,7 +63,7 @@ fun WelcomeScreen(navController: NavController) {
             )
 
             PrimaryBtn(
-                text = "Navigate to AboutScreen",
+                text = "Read More",
                 onClick = { navController.navigate("aboutScreen") },
             )
         }
