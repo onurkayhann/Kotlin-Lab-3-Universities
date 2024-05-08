@@ -52,9 +52,23 @@ import kotlinx.coroutines.launch
 fun UniversityUI(
     viewModel: UniversityViewModel = viewModel(),
     userRepository: UserRepository,
+    username: String,
 ) { // comment out if it crashes
     var country by remember { mutableStateOf("") } // State for user input
     val coroutineScope = rememberCoroutineScope()
+
+    // user values
+    var password by remember { mutableStateOf("") }
+    val universityList = remember { mutableStateOf(mutableListOf<University>()) } // State for user's university list
+
+    fun handleLogin(newUsername: String, newPassword: String, universityList: MutableList<University>?) {
+        coroutineScope.launch(Dispatchers.IO) {
+            // Perform database operations here
+            // For example, update username and password
+            userRepository.insertOrUpdateUser(User(newUsername, newPassword, universityList))
+        }
+    }
+
 
     Column(
         verticalArrangement = Arrangement.Top,
@@ -132,15 +146,22 @@ fun UniversityUI(
                                 .padding(vertical = 5.dp)
                         ) {
                             PrimaryBtn(text = "Enroll", onClick = {
-                                coroutineScope.launch {
-                                    val currentUser = userRepository.findUser("onur", "123")
+                                coroutineScope.launch(Dispatchers.IO) {
+                                    // Find user by username
+                                    val currentUser = userRepository.findUser(username, password)
+
+
                                     if (currentUser != null) {
+                                        // Add university to user's universityList
                                         userRepository.addUniversityToUser(currentUser.id ?: -1, university)
+                                        println("University $university added to user $username's list")
+                                    } else {
+                                        println("Couldn't add university to $username")
                                     }
                                 }
                             })
                             Spacer(modifier = Modifier.width(8.dp))
-                            SecondaryBtn(text = "Read More", onClick = { /* TODO */ })
+                            SecondaryBtn(text = "Info", onClick = { /* TODO */ })
                         }
                     }
                 }

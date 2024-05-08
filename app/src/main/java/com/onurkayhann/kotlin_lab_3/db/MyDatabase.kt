@@ -10,7 +10,7 @@ import com.onurkayhann.kotlin_lab_3.api.University
 import com.onurkayhann.kotlin_lab_3.ui.models.user.User
 import com.onurkayhann.kotlin_lab_3.ui.models.user.UserDAO
 
-@Database(entities = [User::class, University::class /* Remove here if app crashes */], version = 3)
+@Database(entities = [User::class, University::class], version = 3)
 abstract class MyDatabase : RoomDatabase() {
 
     abstract fun userDao() : UserDAO

@@ -22,6 +22,12 @@ class UserRepository(
         return myDatabase.userDao().findUser(username, password)
     }
 
+    // GET USER BY ID
+    suspend fun getUserById(userId: Long): User? {
+        return myDatabase.userDao().getUserById(userId)
+    }
+
+
     fun findAllUsers(): Flow<List<User>> {
         return myDatabase.userDao().findAllUsers()
     }

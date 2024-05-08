@@ -82,7 +82,7 @@ fun LoggedInScreen(navController: NavController, username: String) {
             ) {
                 PrimaryBtn(
                     text = "Explore Universities",
-                    onClick = { navController.navigate("universityListScreen") },
+                    onClick = { navController.navigate("universityListScreen/$username") },
                 )
 
                 SecondaryBtn(

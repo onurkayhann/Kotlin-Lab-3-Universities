@@ -32,7 +32,15 @@ fun Home(
         composable("loginScreen") {
             LoginScreen(navController, userRepository)
         }
-        composable("universityListScreen") { UniversityListScreen(universityViewModel, userRepository) } // comment out if it crashes
+        // composable("universityListScreen") { UniversityListScreen(universityViewModel, userRepository) }
+
+
+            composable("UniversityListScreen/{username}") { backStackEntry ->
+            val username = backStackEntry.arguments?.getString("username")
+            username?.let { UniversityListScreen(universityViewModel,userRepository, username = it) }
+        }
+
+
         composable("loggedInScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")
             username?.let { LoggedInScreen(navController, username = it) }

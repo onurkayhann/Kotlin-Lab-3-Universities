@@ -29,8 +29,11 @@ interface UserDAO {
     suspend fun addUniversityToUser(userId: Long, university: University) {
         val user = getUserById(userId)
         if (user != null) {
-            user.universityList?.add(university)
-            insertOrUpdateUser(user)
+            val updatedUniversityList = (user.universityList ?: mutableListOf()).toMutableList().apply {
+                add(university)
+            }
+            val updatedUser = user.copy(universityList = updatedUniversityList)
+            insertOrUpdateUser(updatedUser)
         }
     }
 
