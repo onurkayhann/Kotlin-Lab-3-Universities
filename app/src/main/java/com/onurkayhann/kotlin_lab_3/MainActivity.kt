@@ -52,8 +52,6 @@ class MainActivity : ComponentActivity() {
 
 /*
  *  TODO:
- *      - add reusable buttons to all screens✅
- *      - add reusable cards next to each other as in RegisterScreen, do the same for LoginScreen✅
  *      - email for users?
  *      - theme
  *      - user must be able to add, delete and edit

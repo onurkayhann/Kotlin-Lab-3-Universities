@@ -46,7 +46,7 @@ fun AboutScreen(navController: NavController) {
         Text(
             AnnotatedString("Welcome dear student! ") +
                     AnnotatedString("ErasmusBuddy", SpanStyle(color = Blue80, fontFamily = FontFamily(Font(R.font.poppins_extra_bold)))) +
-                    AnnotatedString(" is a company that offers free Erasmus period ") +
+                    AnnotatedString(" is a company that offers free Erasmus period") +
                     AnnotatedString(" abroad for you courageous students. For ") +
                     AnnotatedString("free", SpanStyle(color = Blue80, fontFamily = FontFamily(Font(R.font.poppins_extra_bold)))) +
                     AnnotatedString("!"),
