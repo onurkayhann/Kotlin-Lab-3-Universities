@@ -1,5 +1,7 @@
 package com.onurkayhann.kotlin_lab_3.ui.screens
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -53,7 +55,8 @@ import kotlinx.coroutines.withContext
 @Composable
 fun LoginScreen(
     navController: NavController,
-    userRepository: UserRepository
+    userRepository: UserRepository,
+    context: Context
 ) {
 
     // user values
@@ -71,10 +74,13 @@ fun LoginScreen(
                 println("Login successful for user: $username")
                 withContext(Dispatchers.Main) {
                     navController.navigate("loggedInScreen/$username")
+                    Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 println("Invalid username or password")
-                // TODO - add Toast
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, "Invalid username or password", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

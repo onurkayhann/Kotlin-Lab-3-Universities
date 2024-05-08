@@ -2,7 +2,9 @@ package com.onurkayhann.kotlin_lab_3.ui.screens
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -52,6 +54,7 @@ import com.onurkayhann.kotlin_lab_3.ui.models.user.UserRepository
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -61,7 +64,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun RegisterScreen(
     navController: NavController,
-    userRepository: UserRepository
+    userRepository: UserRepository,
+    context: Context
 ) {
 
     // user values
@@ -222,6 +226,10 @@ fun RegisterScreen(
                                 password = ""
                                 confirmPassword = ""
 
+                                CoroutineScope(Dispatchers.Main).launch {
+                                    Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
+                                }
+
                                 // Find all users
                                 userRepository.performDatabaseOperation(Dispatchers.Main) {
                                     userRepository.findAllUsers().collect {
@@ -231,7 +239,9 @@ fun RegisterScreen(
                             }
                         } else {
                             println("Password mismatch")
-                            // TODO: Toast
+                            CoroutineScope(Dispatchers.Main).launch {
+                                Toast.makeText(context, "Password mismatch", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 )

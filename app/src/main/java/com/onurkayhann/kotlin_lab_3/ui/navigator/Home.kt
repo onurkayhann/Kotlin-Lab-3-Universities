@@ -14,12 +14,15 @@ import com.onurkayhann.kotlin_lab_3.ui.screens.RegisterScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.UniversityListScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.WelcomeScreen
 import com.onurkayhann.kotlin_lab_3.viewModels.UniversityViewModel
+import android.content.Context
+
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun Home(
     userRepository: UserRepository,
     universityViewModel: UniversityViewModel,
+    context: Context
 ) {
 
     val navController = rememberNavController()
@@ -28,9 +31,9 @@ fun Home(
     NavHost(navController = navController, startDestination = "welcomeScreen") {
         composable("welcomeScreen") { WelcomeScreen(navController) }
         composable("aboutScreen") { AboutScreen(navController) }
-        composable("registerScreen") { RegisterScreen(navController, userRepository) }
+        composable("registerScreen") { RegisterScreen(navController, userRepository, context) }
         composable("loginScreen") {
-            LoginScreen(navController, userRepository)
+            LoginScreen(navController, userRepository, context)
         }
         // composable("universityListScreen") { UniversityListScreen(universityViewModel, userRepository) }
 
