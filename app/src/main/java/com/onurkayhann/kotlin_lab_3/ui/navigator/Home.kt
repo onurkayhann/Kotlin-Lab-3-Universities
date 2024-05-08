@@ -35,8 +35,6 @@ fun Home(
         composable("loginScreen") {
             LoginScreen(navController, userRepository, context)
         }
-        // composable("universityListScreen") { UniversityListScreen(universityViewModel, userRepository) }
-
 
             composable("UniversityListScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")

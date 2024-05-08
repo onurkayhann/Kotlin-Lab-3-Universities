@@ -90,9 +90,7 @@ fun LoggedInScreen(navController: NavController, username: String) {
                     text = "Profile",
                     onClick = { /* TODO */ },
                 )
-
             }
-
         }
     }
 }

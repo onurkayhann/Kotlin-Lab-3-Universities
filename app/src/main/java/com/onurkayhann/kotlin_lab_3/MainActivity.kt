@@ -57,7 +57,6 @@ class MainActivity : ComponentActivity() {
  *      - user must be able to add, delete and edit
  *      - user shouldn't be able to register with existing username
  *      - make card with less width, also blue button with less width
- *      - add Toast to different situations
  *      - SignedInScreen:
  *          --> Trending Universities (show 5 randomly universities) with cards moving automatically to the left
  *          --> button for Edit Profile,
