@@ -21,7 +21,6 @@ import com.onurkayhann.kotlin_lab_3.viewModels.UniversityViewModel
 class MainActivity : ComponentActivity() {
     private val universityViewModel by viewModels<UniversityViewModel>()
 
-
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +31,10 @@ class MainActivity : ComponentActivity() {
         val db = MyDatabase.getInstance(applicationContext)
         val userRepository = UserRepository(db, lifecycleScope)
 
+
         // Run Logic
         println(applicationContext.getDatabasePath("my-app-db"))
+
 
         setContent {
             KotlinLab3Theme {
@@ -42,7 +43,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Home(userRepository, universityViewModel, applicationContext)
+                    Home(userRepository, universityViewModel, applicationContext, db, lifecycleScope)
                 }
             }
         }

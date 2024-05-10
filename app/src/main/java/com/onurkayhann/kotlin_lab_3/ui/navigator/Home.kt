@@ -15,6 +15,11 @@ import com.onurkayhann.kotlin_lab_3.ui.screens.UniversityListScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.WelcomeScreen
 import com.onurkayhann.kotlin_lab_3.viewModels.UniversityViewModel
 import android.content.Context
+import androidx.lifecycle.LifecycleCoroutineScope
+import com.onurkayhann.kotlin_lab_3.db.MyDatabase
+// import com.onurkayhann.kotlin_lab_3.ui.screens.UserProfileScreen
+
+// import com.onurkayhann.kotlin_lab_3.ui.screens.UserProfileScreen
 
 
 @RequiresApi(Build.VERSION_CODES.Q)
@@ -22,7 +27,9 @@ import android.content.Context
 fun Home(
     userRepository: UserRepository,
     universityViewModel: UniversityViewModel,
-    context: Context
+    context: Context,
+    db: MyDatabase, // delete if app crashes
+    lifecycleScope: LifecycleCoroutineScope // delete if app crashes
 ) {
     val navController = rememberNavController()
 
@@ -34,14 +41,34 @@ fun Home(
             LoginScreen(navController, userRepository, context)
         }
 
-            composable("UniversityListScreen/{username}") { backStackEntry ->
+        composable("UniversityListScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")
-            username?.let { UniversityListScreen(universityViewModel,userRepository, username = it) }
+            username?.let {
+                UniversityListScreen(universityViewModel, userRepository, it)
+            }
         }
 
         composable("loggedInScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")
             username?.let { LoggedInScreen(navController, username = it) }
         }
+
+        /*
+
+        composable("userProfileScreen/{username}") { backStackEntry ->
+            val username = backStackEntry.arguments?.getString("username")
+            val userId = userRepository.getLoggedInUserId() // Retrieve the userId from UserRepository
+            username?.let {
+                UserProfileScreen(
+                    userId = userId,
+                    username = it,
+                    userRepository = userRepository
+                )
+            }
+        }
+
+         */
+
+
     }
 }

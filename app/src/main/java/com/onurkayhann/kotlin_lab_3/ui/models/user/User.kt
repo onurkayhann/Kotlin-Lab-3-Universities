@@ -11,7 +11,7 @@ import com.onurkayhann.kotlin_lab_3.db.Converters
 @Entity(tableName = "users")
 @TypeConverters(Converters::class)
 data class User(
-    val username: String,
+    var username: String,
     val password: String,
     val universityList: MutableList<University>? = null // if app crashes, comment this section out
 ) {

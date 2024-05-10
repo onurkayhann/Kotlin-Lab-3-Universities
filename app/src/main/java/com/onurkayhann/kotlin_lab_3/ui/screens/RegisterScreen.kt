@@ -57,6 +57,7 @@ import com.onurkayhann.kotlin_lab_3.ui.theme.Gray80
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -216,31 +217,47 @@ fun RegisterScreen(
                 PrimaryBtn(
                     text = "Register",
                     onClick = {
-                        if (username.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
-                            userRepository.performDatabaseOperation(Dispatchers.IO) {
-                            val user = User(username, password, null)
-                                userRepository.insertOrUpdateUser(user)
-                                println("user registered: $username")
+                        coroutineScope.launch { // Launch a coroutine
+                            if (username.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
+                                // Check if username already exists
+                                val existingUser = userRepository.findUserByUsername(username)
+                                if (existingUser == null) {
+                                    // If username is unique, register the user
+                                    userRepository.performDatabaseOperation(Dispatchers.IO) {
+                                        val user = User(username, password, null)
+                                        userRepository.insertOrUpdateUser(user)
+                                        println("user registered: $username")
 
-                                username = ""
-                                password = ""
-                                confirmPassword = ""
+                                        username = ""
+                                        password = ""
+                                        confirmPassword = ""
 
-                                CoroutineScope(Dispatchers.Main).launch {
-                                    Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
-                                }
+                                        // Show toast message on the main/UI thread
+                                        withContext(Dispatchers.Main) {
+                                            Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
+                                        }
 
-                                // Find all users
-                                userRepository.performDatabaseOperation(Dispatchers.Main) {
-                                    userRepository.findAllUsers().collect {
-                                        println(it)
+                                        // Find all users
+                                        userRepository.performDatabaseOperation(Dispatchers.Main) {
+                                            userRepository.findAllUsers().collect {
+                                                println(it)
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    // If username already exists, show an error message
+                                    println("Username already exists")
+                                    // Show toast message on the main/UI thread
+                                    withContext(Dispatchers.Main) {
+                                        Toast.makeText(context, "Username already exists", Toast.LENGTH_SHORT).show()
                                     }
                                 }
-                            }
-                        } else {
-                            println("Password mismatch")
-                            CoroutineScope(Dispatchers.Main).launch {
-                                Toast.makeText(context, "Password mismatch", Toast.LENGTH_SHORT).show()
+                            } else {
+                                println("Password mismatch")
+                                // Show toast message on the main/UI thread
+                                withContext(Dispatchers.Main) {
+                                    Toast.makeText(context, "Password mismatch", Toast.LENGTH_SHORT).show()
+                                }
                             }
                         }
                     }
