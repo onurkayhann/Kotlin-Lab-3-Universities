@@ -160,7 +160,7 @@ fun UniversityUI(
                                     // Check if the current user exists
                                     if (currentUser?.id != null) {
                                         // Call the new function to add the university to the user's university list
-                                        userRepository.addUniversityToUserThree(currentUser.id ?: -1, currentUser, university)
+                                        userRepository.addUniversityToUser(currentUser.id ?: -1, currentUser, university)
                                         println("University $university added to user $username's list")
                                     } else {
                                         println("User $username not found")

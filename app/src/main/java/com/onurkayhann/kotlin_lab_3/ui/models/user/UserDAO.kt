@@ -44,45 +44,8 @@ interface UserDAO {
             val updatedUniversityList = (user.universityList ?: mutableListOf()).toMutableList().apply {
                 add(university)
             }
-            // Update the user with the new university list
-            updateUser(user.copy(universityList = updatedUniversityList))
-        }
-    }
-
-    @Transaction
-    suspend fun addUniversityToUserTwo(user: User, university: University) {
-            val updatedUniversityList = (user.universityList ?: mutableListOf()).toMutableList().apply {
-                add(university)
-            }
             val updatedUser = user.copy(universityList = updatedUniversityList)
             insertOrUpdateUser(updatedUser)
-        }
-
-    @Transaction
-    suspend fun addUniversityToUserThree(userId: Long, university: University) {
-        val user = getUserById(userId)
-        if (user != null) {
-            val updatedUniversityList = (user.universityList ?: mutableListOf()).toMutableList().apply {
-                add(university)
-            }
-            val updatedUser = user.copy(universityList = updatedUniversityList)
-            insertOrUpdateUser(updatedUser)
-        }
-    }
-
-
-
-    @Transaction
-    suspend fun addUniversityToUserIfMatching(userId: Long, university: University, username: String) {
-        val user = getUserById(userId)
-        if (user != null && user.username == username) {
-            val updatedUniversityList = (user.universityList ?: mutableListOf()).toMutableList().apply {
-                add(university)
-            }
-            val updatedUser = user.copy(universityList = updatedUniversityList)
-            insertOrUpdateUser(updatedUser)
-        } else {
-            println("User $username not found or ID doesn't match")
         }
     }
 

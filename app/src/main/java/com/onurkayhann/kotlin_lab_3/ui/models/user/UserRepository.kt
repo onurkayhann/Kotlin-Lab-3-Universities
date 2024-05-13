@@ -13,12 +13,6 @@ class UserRepository(
     private val coroutineScope: CoroutineScope
 ) {
 
-    fun addUniversityToUserIfMatching(userId: Long, university: University, username: String) {
-        coroutineScope.launch(Dispatchers.IO) {
-            myDatabase.userDao().addUniversityToUserIfMatching(userId, university, username)
-        }
-    }
-
     var loggedInUserId: Long = -1 // Default value indicating no logged-in user
 
    // SAVE USER
@@ -55,22 +49,10 @@ class UserRepository(
         return myDatabase.userDao().findAllUsers()
     }
 
-    // comment out if it crashes
-    suspend fun addUniversityToUser(userId: Long, university: University) {
-        myDatabase.userDao().addUniversityToUser(userId, university)
-    }
-
-    suspend fun addUniversityToUserTwo(user: User, university: University) {
+    suspend fun addUniversityToUser(userId: Long, user: User, university: University) {
         coroutineScope.launch {
             myDatabase.userDao().updateUser(user)
-            myDatabase.userDao().addUniversityToUserTwo(user, university)
-        }
-    }
-
-    suspend fun addUniversityToUserThree(userId: Long, user: User, university: University) {
-        coroutineScope.launch {
-            myDatabase.userDao().updateUser(user)
-            myDatabase.userDao().addUniversityToUserThree(userId, university)
+            myDatabase.userDao().addUniversityToUser(userId, university)
         }
     }
 
