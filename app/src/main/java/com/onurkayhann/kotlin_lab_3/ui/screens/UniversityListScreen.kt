@@ -6,6 +6,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.onurkayhann.kotlin_lab_3.ui.composables.UniversityUI
 import com.onurkayhann.kotlin_lab_3.ui.models.user.UserRepository
@@ -17,6 +18,7 @@ fun UniversityListScreen(
     universityViewModel: UniversityViewModel,
     userRepository: UserRepository,
     username: String,
+    navController: NavController // Add NavController parameter
 ) {
     val coroutineScope = rememberCoroutineScope() // Remember the coroutine scope
 

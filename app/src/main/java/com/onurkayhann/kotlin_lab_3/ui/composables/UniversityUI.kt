@@ -35,6 +35,7 @@ import com.onurkayhann.kotlin_lab_3.viewModels.UniversityViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
 import com.onurkayhann.kotlin_lab_3.ui.components.SecondaryBtn
+import com.onurkayhann.kotlin_lab_3.ui.models.user.User
 import com.onurkayhann.kotlin_lab_3.ui.models.user.UserRepository
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
@@ -52,6 +53,13 @@ fun UniversityUI(
     userId: Long,
 ) { // comment out if it crashes
     var country by remember { mutableStateOf("") } // State for user input
+
+    var currentUser by remember { mutableStateOf<User?>(null) }
+
+    LaunchedEffect(username) {
+        val user = userRepository.findUserByUsername(username)
+        currentUser = user
+    }
 
     val coroutineScope = rememberCoroutineScope()
 
@@ -77,7 +85,7 @@ fun UniversityUI(
             modifier = Modifier
                 .fillMaxWidth()
         )
-        PrimaryBtn(text = "Search", onClick = { viewModel.fetchUniversityData(country) })
+        PrimaryBtn(text = "Your List", onClick = { viewModel.fetchUniversityData(country) })
 
 
         LaunchedEffect(country) {
@@ -143,31 +151,28 @@ fun UniversityUI(
                              */
 
 
-                            /*
                             PrimaryBtn(text = "Enroll", onClick = {
+                                // Launch a coroutine in the IO dispatcher
                                 coroutineScope.launch(Dispatchers.IO) {
-
-                                    // val currentUser = userRepository.findUserByUsername(username)
+                                    // Fetch the current user by username
                                     val currentUser = userRepository.findUserByUsername(username)
 
-                                    val userById = userRepository.getUserById(userId) /* <-- delete if crashes */
-
-                                    if (currentUser != null) {
-                                        // Add university to user's universityList
-                                        userRepository.addUniversityToUser(currentUser.id ?: -1, university)
+                                    // Check if the current user exists
+                                    if (currentUser?.id != null) {
+                                        // Call the new function to add the university to the user's university list
+                                        userRepository.addUniversityToUserThree(currentUser.id ?: -1, currentUser, university)
                                         println("University $university added to user $username's list")
                                     } else {
-                                        println("User $username not found or user ID does not match")
+                                        println("User $username not found")
                                     }
                                 }
                             })
 
-                             */
 
+                            /*
                             PrimaryBtn(text = "Enroll", onClick = {
                                 coroutineScope.launch(Dispatchers.IO) {
 
-                                    // val currentUser = userRepository.findUserByUsername(username)
                                     val currentUser = userRepository.findUserByUsername(username)
 
                                     val userId = currentUser?.id /* <-- delete if crashes */
@@ -181,6 +186,8 @@ fun UniversityUI(
                                     }
                                 }
                             })
+
+                             */
 
                             Spacer(modifier = Modifier.width(8.dp))
                             SecondaryBtn(text = "Info", onClick = { /* TODO */ })

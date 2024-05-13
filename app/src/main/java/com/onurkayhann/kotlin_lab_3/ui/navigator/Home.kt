@@ -15,8 +15,17 @@ import com.onurkayhann.kotlin_lab_3.ui.screens.UniversityListScreen
 import com.onurkayhann.kotlin_lab_3.ui.screens.WelcomeScreen
 import com.onurkayhann.kotlin_lab_3.viewModels.UniversityViewModel
 import android.content.Context
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.onurkayhann.kotlin_lab_3.db.MyDatabase
+import com.onurkayhann.kotlin_lab_3.ui.composables.UniversityUI
+import com.onurkayhann.kotlin_lab_3.ui.models.user.User
+import com.onurkayhann.kotlin_lab_3.ui.screens.UserUniversityListScreen
+
 // import com.onurkayhann.kotlin_lab_3.ui.screens.UserProfileScreen
 
 // import com.onurkayhann.kotlin_lab_3.ui.screens.UserProfileScreen
@@ -37,14 +46,13 @@ fun Home(
         composable("welcomeScreen") { WelcomeScreen(navController) }
         composable("aboutScreen") { AboutScreen(navController) }
         composable("registerScreen") { RegisterScreen(navController, userRepository, context) }
-        composable("loginScreen") {
-            LoginScreen(navController, userRepository, context)
-        }
+        composable("loginScreen") { LoginScreen(navController, userRepository, context) }
+
 
         composable("UniversityListScreen/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username")
             username?.let {
-                UniversityListScreen(universityViewModel, userRepository, it)
+                UniversityListScreen(universityViewModel, userRepository, it, navController)
             }
         }
 

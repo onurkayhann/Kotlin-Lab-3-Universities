@@ -2,6 +2,7 @@ package com.onurkayhann.kotlin_lab_3.ui.models.user
 
 import androidx.core.view.OneShotPreDrawListener.add
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
@@ -11,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDAO {
-
     @Update
     suspend fun updateUsername(user: User)
 
@@ -44,8 +44,8 @@ interface UserDAO {
             val updatedUniversityList = (user.universityList ?: mutableListOf()).toMutableList().apply {
                 add(university)
             }
-            val updatedUser = user.copy(universityList = updatedUniversityList)
-            insertOrUpdateUser(updatedUser)
+            // Update the user with the new university list
+            updateUser(user.copy(universityList = updatedUniversityList))
         }
     }
 
@@ -57,6 +57,18 @@ interface UserDAO {
             val updatedUser = user.copy(universityList = updatedUniversityList)
             insertOrUpdateUser(updatedUser)
         }
+
+    @Transaction
+    suspend fun addUniversityToUserThree(userId: Long, university: University) {
+        val user = getUserById(userId)
+        if (user != null) {
+            val updatedUniversityList = (user.universityList ?: mutableListOf()).toMutableList().apply {
+                add(university)
+            }
+            val updatedUser = user.copy(universityList = updatedUniversityList)
+            insertOrUpdateUser(updatedUser)
+        }
+    }
 
 
 
@@ -77,6 +89,9 @@ interface UserDAO {
 
     @Query("SELECT * FROM users WHERE username = :username")
     suspend fun findUserByUsername(username: String): User?
+
+    @Query("SELECT * FROM users WHERE username = :username LIMIT 1")
+    suspend fun getCurrentUser(username: String): User?
 
     @Query("SELECT * FROM users WHERE username = :username AND id = :userId")
     suspend fun findUserByUsernameAndId(username: String, userId: Long): User?

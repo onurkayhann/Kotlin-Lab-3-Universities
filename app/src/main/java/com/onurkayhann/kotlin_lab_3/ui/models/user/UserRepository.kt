@@ -21,9 +21,13 @@ class UserRepository(
 
     var loggedInUserId: Long = -1 // Default value indicating no logged-in user
 
-    // SAVE USER
+   // SAVE USER
     fun insertOrUpdateUser(user: User) {
         myDatabase.userDao().insertOrUpdateUser(user)
+    }
+
+    suspend fun updateUser(user: User) {
+        myDatabase.userDao().updateUser(user)
     }
 
     // FIND USER BY USERNAME && PASSWORDS
@@ -53,11 +57,8 @@ class UserRepository(
 
     // comment out if it crashes
     suspend fun addUniversityToUser(userId: Long, university: University) {
-        coroutineScope.launch {
-            myDatabase.userDao().addUniversityToUser(userId, university)
-        }
+        myDatabase.userDao().addUniversityToUser(userId, university)
     }
-
 
     suspend fun addUniversityToUserTwo(user: User, university: University) {
         coroutineScope.launch {
@@ -65,9 +66,12 @@ class UserRepository(
             myDatabase.userDao().addUniversityToUserTwo(user, university)
         }
     }
-    suspend fun addUniversityToUserTwo(user: User, university: University, username: String) {
-        user.universityList?.add(university)
-        myDatabase.userDao().updateUser(user)
+
+    suspend fun addUniversityToUserThree(userId: Long, user: User, university: University) {
+        coroutineScope.launch {
+            myDatabase.userDao().updateUser(user)
+            myDatabase.userDao().addUniversityToUserThree(userId, university)
+        }
     }
 
     suspend fun updateUsername(userId: Long, newUsername: String) {
@@ -76,19 +80,6 @@ class UserRepository(
 
     suspend fun findUserByUsername(username: String): User? {
         return myDatabase.userDao().findUserByUsername(username)
-    }
-
-    suspend fun findUserByUsernameAndId(username: String, userId: Long): User? {
-        return myDatabase.userDao().findUserByUsernameAndId(username, userId)
-    }
-
-
-    suspend fun updateUser(user: User) {
-        myDatabase.userDao().updateUser(user)
-    }
-
-    suspend fun updateUniversity(university: University) {
-        myDatabase.userDao().updateUniversity(university)
     }
 
     fun performDatabaseOperation(dispatcher: CoroutineDispatcher, databaseOperation: suspend () -> Unit) {
