@@ -1,4 +1,4 @@
-package com.onurkayhann.kotlin_lab_3.api
+package com.onurkayhann.kotlin_lab_3.ui.models.university
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

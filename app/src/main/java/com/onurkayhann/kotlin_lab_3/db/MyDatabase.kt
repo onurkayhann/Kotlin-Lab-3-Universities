@@ -6,11 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.onurkayhann.kotlin_lab_3.api.University
+import com.onurkayhann.kotlin_lab_3.ui.models.university.University
 import com.onurkayhann.kotlin_lab_3.ui.models.user.User
 import com.onurkayhann.kotlin_lab_3.ui.models.user.UserDAO
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 
 @Database(entities = [User::class, University::class], version = 3)
 abstract class MyDatabase : RoomDatabase() {
@@ -41,7 +39,6 @@ abstract class MyDatabase : RoomDatabase() {
 
                 db.execSQL("DROP TABLE IF EXISTS universities")
 
-                // Create the universities table if it doesn't exist
                 db.execSQL(
                     "CREATE TABLE IF NOT EXISTS universities (" +
                             "name TEXT NOT NULL," +
@@ -52,9 +49,6 @@ abstract class MyDatabase : RoomDatabase() {
 
                 // Add the universityList column to the users table
                 db.execSQL("ALTER TABLE users ADD COLUMN universityList TEXT")
-
-                // You can also set default value to null for existing rows
-                //db.execSQL("UPDATE users SET universityList = NULL WHERE universityList IS NULL")
             }
         }
     }

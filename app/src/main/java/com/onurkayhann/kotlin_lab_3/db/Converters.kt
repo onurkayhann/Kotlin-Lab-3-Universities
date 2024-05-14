@@ -3,7 +3,7 @@ package com.onurkayhann.kotlin_lab_3.db
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.onurkayhann.kotlin_lab_3.api.University
+import com.onurkayhann.kotlin_lab_3.ui.models.university.University
 
 object Converters {
     @TypeConverter

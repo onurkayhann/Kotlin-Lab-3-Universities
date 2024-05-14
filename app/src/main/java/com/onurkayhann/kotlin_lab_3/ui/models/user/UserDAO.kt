@@ -1,13 +1,11 @@
 package com.onurkayhann.kotlin_lab_3.ui.models.user
 
-import androidx.core.view.OneShotPreDrawListener.add
 import androidx.room.Dao
-import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import androidx.room.Upsert
-import com.onurkayhann.kotlin_lab_3.api.University
+import com.onurkayhann.kotlin_lab_3.ui.models.university.University
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -26,7 +26,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -44,9 +43,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.onurkayhann.kotlin_lab_3.R
-import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
-import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
-import com.onurkayhann.kotlin_lab_3.ui.components.SecondaryBtn
+import com.onurkayhann.kotlin_lab_3.ui.composables.CompanyLogo
+import com.onurkayhann.kotlin_lab_3.ui.composables.PrimaryBtn
+import com.onurkayhann.kotlin_lab_3.ui.composables.SecondaryBtn
 import com.onurkayhann.kotlin_lab_3.ui.models.user.UserRepository
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80

@@ -49,21 +49,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
-/*
- *  TODO:
- *      - email for users?
- *      - theme
- *      - user must be able to add, delete and edit
- *      - user shouldn't be able to register with existing username
- *      - make card with less width, also blue button with less width
- *      - SignedInScreen:
- *          --> Trending Universities (show 5 randomly universities) with cards moving automatically to the left
- *          --> button for Edit Profile,
- *          --> button for Explore Universities,
- *          --> and there should universities be rendered with search input field
- *          --> Add User Profile Picture? Instead of CompanyLogo
- *      - add right arrow to 'Read More' and 'Go to Login' button
- *      - delete UniversityDAO and UniversityRepository?
-*/

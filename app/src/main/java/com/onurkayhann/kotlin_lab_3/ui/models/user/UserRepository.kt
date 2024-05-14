@@ -1,10 +1,9 @@
 package com.onurkayhann.kotlin_lab_3.ui.models.user
 
-import com.onurkayhann.kotlin_lab_3.api.University
+import com.onurkayhann.kotlin_lab_3.ui.models.university.University
 import com.onurkayhann.kotlin_lab_3.db.MyDatabase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

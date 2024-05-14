@@ -24,9 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.onurkayhann.kotlin_lab_3.R
-import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
-import com.onurkayhann.kotlin_lab_3.ui.components.PrimaryBtn
-import com.onurkayhann.kotlin_lab_3.ui.components.SecondaryBtn
+import com.onurkayhann.kotlin_lab_3.ui.composables.CompanyLogo
+import com.onurkayhann.kotlin_lab_3.ui.composables.PrimaryBtn
+import com.onurkayhann.kotlin_lab_3.ui.composables.SecondaryBtn
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 import com.onurkayhann.kotlin_lab_3.ui.theme.Blue80
 

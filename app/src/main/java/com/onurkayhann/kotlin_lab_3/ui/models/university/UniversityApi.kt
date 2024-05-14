@@ -1,4 +1,4 @@
-package com.onurkayhann.kotlin_lab_3.api
+package com.onurkayhann.kotlin_lab_3.ui.models.university
 
 import retrofit2.Call
 import retrofit2.http.GET

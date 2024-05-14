@@ -1,10 +1,9 @@
 package com.onurkayhann.kotlin_lab_3.ui.models.user
 
-import androidx.compose.runtime.mutableStateListOf
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.onurkayhann.kotlin_lab_3.api.University
+import com.onurkayhann.kotlin_lab_3.ui.models.university.University
 import com.onurkayhann.kotlin_lab_3.db.Converters
 
 // User
@@ -13,7 +12,7 @@ import com.onurkayhann.kotlin_lab_3.db.Converters
 data class User(
     var username: String,
     val password: String,
-    val universityList: MutableList<University>? = null // if app crashes, comment this section out
+    val universityList: MutableList<University>? = null
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long? = null

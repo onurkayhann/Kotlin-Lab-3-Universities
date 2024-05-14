@@ -1,5 +1,7 @@
 package com.onurkayhann.kotlin_lab_3.api
 
+import com.onurkayhann.kotlin_lab_3.ui.models.university.University
+import com.onurkayhann.kotlin_lab_3.ui.models.university.UniversityApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

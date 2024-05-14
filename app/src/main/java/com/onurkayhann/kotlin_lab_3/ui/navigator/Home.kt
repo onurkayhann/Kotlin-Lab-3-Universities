@@ -37,8 +37,8 @@ fun Home(
     userRepository: UserRepository,
     universityViewModel: UniversityViewModel,
     context: Context,
-    db: MyDatabase, // delete if app crashes
-    lifecycleScope: LifecycleCoroutineScope // delete if app crashes
+    db: MyDatabase,
+    lifecycleScope: LifecycleCoroutineScope
 ) {
     val navController = rememberNavController()
 
@@ -60,23 +60,6 @@ fun Home(
             val username = backStackEntry.arguments?.getString("username")
             username?.let { LoggedInScreen(navController, username = it) }
         }
-
-        /*
-
-        composable("userProfileScreen/{username}") { backStackEntry ->
-            val username = backStackEntry.arguments?.getString("username")
-            val userId = userRepository.getLoggedInUserId() // Retrieve the userId from UserRepository
-            username?.let {
-                UserProfileScreen(
-                    userId = userId,
-                    username = it,
-                    userRepository = userRepository
-                )
-            }
-        }
-
-         */
-
 
     }
 }

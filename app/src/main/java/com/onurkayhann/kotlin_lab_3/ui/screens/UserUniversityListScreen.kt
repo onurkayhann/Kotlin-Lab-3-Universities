@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.onurkayhann.kotlin_lab_3.R
-import com.onurkayhann.kotlin_lab_3.ui.components.CompanyLogo
+import com.onurkayhann.kotlin_lab_3.ui.composables.CompanyLogo
 import com.onurkayhann.kotlin_lab_3.ui.models.user.User
 import com.onurkayhann.kotlin_lab_3.ui.theme.BlackBlue80
 

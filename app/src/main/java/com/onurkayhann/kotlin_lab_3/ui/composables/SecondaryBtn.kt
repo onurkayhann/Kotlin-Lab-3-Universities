@@ -1,4 +1,4 @@
-package com.onurkayhann.kotlin_lab_3.ui.components
+package com.onurkayhann.kotlin_lab_3.ui.composables
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.height
