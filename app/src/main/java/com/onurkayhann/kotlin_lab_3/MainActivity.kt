@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
         val userRepository = UserRepository(db, lifecycleScope)
 
 
-        // Run Logic
+        // Print Logic
         println(applicationContext.getDatabasePath("my-app-db"))
 
 
